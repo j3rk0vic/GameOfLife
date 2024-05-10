@@ -1,24 +1,18 @@
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "game_of_life.h"
+using namespace std;
 
-int main()
-{
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Hello, SFML world!");
-	window.setFramerateLimit(60);
-	//Cvijet cvijet(&window);
+int main() {
+    game_of_life the_game;
 
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
+    bool dalje;
+    do {
+        the_game.iscrtaj();
+        the_game.sljedeca_generacija();
 
-		window.clear();
-		//cvijet.draw();
-		window.display();
-	}
+        cout << "Dalje (1/0): ";
+        cin >> dalje;
+    } while (dalje);
 
-	return 0;
+    return 0;
 }
